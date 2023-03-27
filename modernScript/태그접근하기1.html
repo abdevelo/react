@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 태그 : input류와 그 밖에류가 있다
+  
+        input : 사용자로부터 값을 입력받아 서버로 전달
+                name속성과 value속성이 제일 중요
+                name = value 
+        <input type="text" name="userid" value="test"/>
+        userid=test
+        
+        또다른 input류...? select, textarea, 
+
+        var userid = document.getElementsByName("userid")
+        userid[0].value="test";
+
+          이 접근 방식은 걍 외우기 ****
+
+          여기서 document는 html전체 파일을 자바스크립트가 하나의 문서로 만들어줌
+          getElement's' 로 해주면 userid는 그 내의 값이 1개여도 무조건 배열로 인식
+          그래서 userid 뒤에 대괄호를 잊으면 절대 안 됌!
+
+
+        '그 밖에'류 : 
+        table, div, span : id속성, class속성 두 개만 줄 수 있음
+          백엔드 개발자는 span태그, strong태그 정도만 넣을 수 있음
+          퍼블리셔가 대부분의 table, div를 정해서 주기 때문
+
+          *주의사항 : id는 무조건 문서 1개에 1개의 값만... 중복 불가
+        
+          <span id="result">결과1</span>
+          <span id="result">결과2</span>
+          
+          이렇게 해두면 첫번째 결과1만 가져오고 
+          두번째는 결과2는 버리고 옴
+          인식하지 못함
+
+        var result = document.getElementById("result"); // 첫번째것만 가져옴
+        result.innerHTML = "새로운 결과";
+
+          id는 절대 배열을 가질 수 없음
+
+
+        Q.Input 태그는 id쓸 수 없느냐? 
+            A.있다. 다씀. 
+              input태그는 대신 name을 씀.
+  -->
+      </body>
+</html>
