@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    문제 1 ) 사각형 면적 구하기
+    사각형의 가로 세로를 입력받아 면적을 구하여 출력
+  -->
+  <h1> 면적 계산기 </h1>
+  width : <input type="text" name="width" id="width"></br>
+  height : <input type="text" name="height" id="height"></br>
+  면적   <button onclick="surface()">구하기</button> : <span id="surface"></span>
+  <hr>
+  <!--
+    문제 2 ) 이름, 일주일간 근무시간, 시간당 급여액을 입력받아 주급을 계산하세요.
+    단 20시간 초과 근무 시 초과근무에 대해서는 초과 수당을 지급하세요
+    초과수당은 시간당 급여액의 50%입니다. 
+    근무시간 : 30  <= input태그
+    시간당 급여액 : 20000  <= input태그
+    기본급 :  60000 , 초과수당 : 100000, 합 : 700000 <= input태그
+  -->
+  <h1> 주급계산기 </h1>
+  이름 : <input type="text" name="name" id="name"></br>
+  근무시간(일주일) : <input type="text" name="workHour" id="workHour"></br>
+  시간 당 급여액 : <input type="text" name="salPerHour" id="salPerHour"></br>
+  주급 <button onclick="weeklySal()">구하기</button>: <span id="result"></span></br>
+  <span id="temp"></span></br>
+  <button type="text" onclick="goClear()">새로입력</button></br>
+
+</body>
+</html>
+
+<script>
+  //문제1
+  function surface()
+  {
+    x = document.getElementById("width").value;
+    y = document.getElementById("height").value;
+
+    result = parseInt(x) * parseInt(y)
+
+    document.getElementById("surface").innerHTML=result;
+  }
+
+  //문제 2
+
+  function weeklySal()
+  {
+    //1.입력 
+
+    name = document.getElementById("name").value;
+    workHour = document.getElementById("workHour").value;
+    salPerHour = document.getElementById("salPerHour").value;
+    workHour = parseInt(workHour);
+    salPerHour = parseInt(salPerHour);
+
+    //2.계산
+    base_pay = workHour*salPerHour
+    over_pay = 0;
+    if ( workHour > 20 )
+    {
+      over_pay = (workHour-20)*salPerHour/2;
+    }
+    result = base_pay + over_pay;
+
+    //3.출력
+    temp = `${name} 의 기본급은 ${base_pay}이고 수당은 ${over_pay}이고 총액은 ${result}입니다. `;
+    document.getElementById("result").innerHTML=result;
+    document.getElementById("temp").innerHTML=temp;
+  }
+
+  function goClear()
+  {
+    document.getElementById("name").value="";
+    document.getElementById("workHour").value="";
+    document.getElementById("salPerHour").value="";
+    document.getElementById("result").innerHTML="";
+    document.getElementById("temp").innerHTML="";
+  }
+</script>

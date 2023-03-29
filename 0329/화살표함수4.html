@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1> 화살표함수 (이차원배열) </h1>  
+</body>
+</html>
+<script>
+  let a = function()
+  {
+    console.log("Hello"); 
+  }
+  let result = a();
+  console.log( result ); // undefined 임
+
+  let nums = [10,20,30,40,50,60,70,80,90,100];
+
+  // map함수는 앞에 배열의 요소, 뒤에는 index가 온다. 그런데 index는 생략하고 안쓰는 것
+  // ( x, i ) => {} 
+  // 자바스크립트에서 제공하는 람다의 구조
+  nums.map( (x, i) => {
+    console.log( i, x);
+    return x;
+  });
+  
+  // 2차원의 경우
+  nums = [[10,20,30], [40,50,60],[70,80,90]];
+  nums.map( (x,i)=> {
+    console.log(i,x);
+    return x;
+  })
+
+  nums.map( (x, i) => {
+      x.map( (y, j) => {
+        console.log(j, y);
+        return y;
+      });
+      return x; // map 의 제일 바깥 부분은 return값이 없으면 undefined 됨 필수!
+  });
+</script>
