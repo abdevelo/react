@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 하나도 안 중요한 함수 중에 하나. 공부할 때만 나옴. 실무에서 절대 안 씀-->
+  <h1>alert와 prompt 함수</h1>
+</body>
+</html>
+
+<script>
+  alert("This is alert modal");
+  x = prompt("x ? ", '0');
+  y = prompt("y ? ", '0');
+
+  if ( x!=null && y!=null)
+  {
+    // x=45, y=7, z=457
+    // parseInt, parseDouble 문자열을 숫자열로 전환해주는 명령어(?)
+    z = parseInt(x) + parseInt(y);
+    alert(z);
+  }else
+  {
+    alert("취소를 눌렀습니다");
+  }
+  
+</script>

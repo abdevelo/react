@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자형예제</title>
+</head>
+<body>
+  <h1>문자형예제</h1>
+</body>
+</html>
+
+<script>
+  let str1 = "알파코";
+  let str2 = '단일따옴표';
+  let str3 = `backtick도 가능합니다. ${str1}`;
+
+  console.log(str1);
+  console.log(str2);
+  console.log(str3);
+
+  let name = "홍길동";
+  let age = 34;
+  let phone = "서울시 관악구 대학동";
+
+  result1 = "이름:" + name + " 나이: " + age + "  전화 : " + phone;
+  result2 = `이름:${name} 나이:${age} 전화:${phone}`;
+
+  str4 = `
+            진달래
+
+                김소월
+
+            나 보기가 역겨워 가실때에는
+            말없이 고이 보내드리오리다 
+  `; // **백틱의 장점** 들여쓰기한 내용이 그대로 반영
+// 전체 내용 드래그 후 
+// shift+tab 하면 들여쓰기 제거로 왼쪽으로 갈 수 있음
+
+let address = "관악구" ;
+  str5 = `
+      이름 : ${name}
+      나이 : ${age}
+      주소 : ${address}
+  `;
+
+  console.log(result1);
+  console.log(result2);
+  console.log(str4);
+  console.log(str5);
+  
+</script>

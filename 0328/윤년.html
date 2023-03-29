@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"> // 메타태그는 핵심의 정보를 의미, UTF-8은 3바이트 문자 시스템, 유니코드는 2바이트 문자 시스템
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 윤년 </title>
+</head>
+<body>
+  <h1>윤년확인</h1>
+</body>
+</html>
+<script>
+  let year = prompt ("연도를 입력하세요", "2023");
+  if (year != null)
+  {
+    if ( year%4==0 && year%100!=0 || year%400==0) //%는 '+'와 달리 문자열을 처리하는 연산이 없기 때문에 자동형변환(string->number)
+    {
+      console.log(`${year}는 윤년입니다.`);
+    }
+    else
+    {
+      console.log(`${year}는 윤년이 아닙니다.`);
+    }
+  }
+</script>
