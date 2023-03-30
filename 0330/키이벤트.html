@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  name : <input type="text" id="frame" 
+                onkeydown="goKeyDown()"
+                onkeypress="goKeyPress()"
+                onkeyup="goKeyUp()"><br/>
+</body>
+</html>
+<script>
+  function goKeyDown() 
+  {
+    console.log( event.key); // 우리가 누른 키에 대한 정보
+    console.log( event.keyCode); //키의 코드값 ex) enter =13 , 한글을 코드가 없음
+    console.log( "keyDown");
+  }
+  function goKeyPress() //아스키코드에 포함되는 문자키만 알려줌
+  {
+
+    console.log( "keypress");
+  }
+  function goKeyUp()
+  {
+    console.log( "keyup");
+    x = document.getElementById("fname"); // 객체 가져오기
+    x.value = x.value.toUpperCase(); // ?
+  }
+</script>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+  <h1>1st assignment</h1>
+  <h3>과제1)주급계산하기 <h3> 
+
+  <h3>
+    자바스크립트를 이용하여 주급을 계산하는 프로그램을 작성하세요 <br>
+    데이터는 직접 JSON 형태로 입력해야 합니다. <br>
+    입력데이터는 이름과 근무시간 시간당 급여액입니다. <br>
+    다음 데이터를 JSON 형태로 저장하고 주급을 계산하여 출력하는 코딩을 작성하세요 <br>
+    참고코드는 클론코드입니다. <br>
+  </h3>
+  
+  <h3>
+    입력데이터) <br>
+    홍길동  40 10000  <br>
+    임꺽정  15 20000 <br>
+    장길산  20 20000 <br>
+    강감찬  30 15000 <br>
+    이순신  40 30000 <br>
+    <br>
+    출력결과<br>
+    <br>
+    이름 : 홍길동  근무시간 : 40  시간당급여액 : 10000  총액 : 400000 <br>
+    이름 : 임꺽정  근무시간 : 15  시간당급여액 : 20000  총액 : 300000 <br>
+    이름 : 장길산  근무시간 : 20  시간당급여액 : 20000  총액 : 400000 <br>
+    이름 : 강감찬  근무시간 : 30  시간당급여액 : 15000  총액 : 450000 <br>
+    이름 : 이순신  근무시간 : 40  시간당급여액 : 30000  총액 : 1200000</h3>
+
+    이름 : <input type="text" id="name"><br/>
+    근무시간 : <input type="text" id="worktime"><br/>
+    시간당급여액 : <input type="text" id="salPerHour"><br/>
+
+    <button type="button" id="btnConfirm">확인</button>&nbsp;&nbsp;
+    <button type="button" id="btnClear">새로입력</button><br/>
+
+    <!-- reset 태그는 input태그들 값을 모두 초기화-->
+
+    <div id="result"></div>
+</body>
+</html>
+<script>
+  // let s = 
+  // [ 
+  //   { 이름 : "홍길동", 근무시간 : 40, 시간당급여액 : 10000, 총액 : 0 },
+  //   { 이름 : "임꺽정", 근무시간 : 15, 시간당급여액 : 20000, 총액 : 0 },
+  //   { 이름 : "장길산", 근무시간 : 20, 시간당급여액 : 20000, 총액 : 0 },
+  //   { 이름 : "강감찬", 근무시간 : 30, 시간당급여액 : 15000, 총액 : 0 },
+  //   { 이름 : "이순신", 근무시간 : 40, 시간당급여액 : 30000, 총액 : 0 },
+  // ];
+
+  $(document).ready( () =>{
+     
+    $("#btnConfirm").click(() => {
+      
+    name = $("#name").val();
+    worktime = parseInt($("#worktime").val());
+    salperhour = parseInt($("#salPerHour").val());
+    base_pay = worktime*salperhour;
+    over_pay = (worktime-20)*salperhour*0.5;
+    
+    if ( salperhour > 20 )
+    {  
+      total_pay= base_pay + over_pay
+    }else
+      total_pay = base_pay //  else if문 뒤에는 세미콜론을 붙여줘야 실행되었는데
+      //else뒤에는 세미콜론을 붙이지 않아도 실행 됨 ..... 
+      // else if 뒤에는 if문이 완료된 것이 확인되지 않아서?????
+
+
+    result = `${name}의 총 근무시간은 ${worktime}이고 주급은 ${total_pay}이다. `
+
+    $("#result").html(result);
+    })
+
+    $("#btnClear").click( () => {
+
+      // $("#name").val("");
+      // $("#worktime").val("");
+      // $("#salPerHour").val("");
+      // $("#result").html("");
+
+      // 위처럼 일일히 나열하지 않고 
+      // 한번에 날리기 
+      $("input").val("");
+      $("div").html("");
+
+      /*
+      input = document.getElementByTagName("input");
+      for ( i=0 ; i< input.length; i++) 
+      {
+        input[i].value="";
+      }
+      */
+
+
+    })
+  });
+
+
+</script>
