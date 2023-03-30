@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  이름 : <input type="text" id="name"> </br>
+  국어 : <input type="text" id="korean"> </br>
+  영어 : <input type="text" id="english"> </br>
+  수학 :  <input type="text" id="math"> </br>
+
+  <button type="text" onclick="cal()">결과확인</button> 
+  <button type="text" onclick="del()">리셋</button> </br>
+
+  <div id="result"></div>
+
+</body>
+</html>
+<script>
+  function cal() {
+
+    name = document.getElementById("name").value;
+    x = document.getElementById("korean").value;
+    y = document.getElementById("english").value;
+    z = document.getElementById("math").value;
+
+    if ( 0> x | x >100)
+    {
+      alert ("0보다크고 100보다 작은 수를 입력하세요");
+      return false;
+    }else korean=x
+
+    if ( 0> y | y >100)
+    {
+      alert ("0보다크고 100보다 작은 수를 입력하세요");
+      return false;
+    }else english=y
+
+    if ( 0> z | z >100)
+    {
+      alert ("0보다크고 100보다 작은 수를 입력하세요");
+      return false;
+    }else math=z
+
+
+    total = parseInt(korean)+parseInt(english)+parseInt(math);
+    avg = total/3 ;
+
+    result = `${name}의 총점은 ${total}이고 평균은 ${avg}입니다.`;
+    document.getElementById("result").innerHTML=result;
+  }
+
+  function del() {
+    document.getElementById("name").value ="";
+    document.getElementById("korean").value ="";
+    document.getElementById("english").value ="";
+    document.getElementById("math").value ="";
+    document.getElementById("result").innerHTML ="";
+  }
+
+</script>
