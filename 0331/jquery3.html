@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <!--위의 주소대로 붙이는 것을 CDN서비스라고 함 Jquery.com CND쪽에 가면 있음-->
+</head>
+<body>
+  <form action="">
+    암호 : <input type="hidden" name="password" value="9999" /> <br/> 
+    아이디 : <input type="text" name="userid" /> <br/>
+    이름 : <input type="text" name="username" /> <br/>
+    <input type="submit" value="보내기"> <br/>
+  </form>
+
+  <!--(1)
+      form태그는 값을 서버로 전달하는 역할
+      한 페이지에 하나만 쓰자(그래야 안정적)
+      for태그를 중첩적으로 작성하면 정보를 서버로 전달하지 못한다.
+      <form>
+        <form>
+        </form>
+      </form>  // X 불가!
+
+      <form>
+      </form>
+      <form>
+      </form> // O 가능은 한데 비추!
+
+      (2)
+      form태그 밖의 input태그는 값을 전달하지 못함
+      
+      form태그 밖의 input태그는 submit하여도 서버에 전달되지 않는데
+      이를 확인할 수 있는 방법 url에 반영이 되는 것으로 알 수 있다. 
+
+      file:///C:/react/modernScript/master/0331/jquery3.html?userid=1234&username=test
+
+
+      서버로 데이터를 전송하는 방식은 크게 
+      GET방식과 POST방식이다. 
+
+      FROM 클라이언트 ------------------------ TO 서버로
+                        header(선발대) : 기초적인 정보를 먼저 보낸다
+                        예를 들어 브라우저 정보나 1000byte내의 가벼운 정보
+
+                        body(후발대) : 중요한 정보를 그 후에 보낸다
+                        예를 들어 이미지파일 등 많은양의 데이터 
+
+      Get방식 : header만 보낸다. 
+                화면 url에 모든 정보가 드러난다. 
+                보안이 필요없는 1000바이트 이내의 가벼운 정보만 보내고자 할 때 사용
+                ?키1=값1&키2=값2&키3=값3 형태
+                한글의 경우는 인코딩이라는 가공을 통해서 다른 문자로 전달된다. 
+                그래서 한글을 Get방식으로 보내려면 Encoding이라는 작업을 해서 보내고 
+                받는 쪽에서는 decoding이라는 작업을 해야 한다.
+                그런데 요즘에는 브라우저가 이 작업을 대신 해주기도 하는데 
+                브라우저 버전에 따라 다르게 동작하므로 안정적이려면
+                한글은 이 방식으로 전송하지 않거나 별도의 작업을 하는 것이 좋다.
+
+      Post방식 : header만 먼저 보내고 다른 정보는 body에 담아 보낸다. 
+                 보내야 할 데이터가 많을 때 사실상 무제한
+                 하지만 30MB이내로 제한
+                 파일 전송, 이미지 전송, 대용량 데이터 등 중요정보들 
+
+
+
+      -->
+</body>
+</html>
+<script>
+
+
+</script>
