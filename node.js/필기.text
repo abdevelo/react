@@ -1,0 +1,32 @@
+board.js ( 라우팅   /board/list -> board.js 응답을 하고 데이터와
+                    board_list.ejs를 묶어준다
+                    boardList데이터를
+                    ejs엔진의 render함수가 데이터와 ejs파일을 묶는다
+                    express에서 view engine이라는 환경변수에 ejs를 연결하면
+                    response.render함수에 ejs파일과 데이터를 묶는다)
+                    이 개발 기법이 nvc기법
+
+                      response.render("board/board_list.ejs", {boardList:boardList});
+                      EJS엔 진 내의 response.render
+                      이 함수는 "A" 내의 파일과 "B"데이터를 결합해줌
+
+board_list.ejs 목록보기
+board_view.ejs 상세보기
+board_wriet.ejs 글쓰기 /board/write로 이동하고 등록하면 /save가 되고 나면 
+                      왜 redirect로 이동해야 하는가?
+                        A. 그냥 write하면 write했던 내용이 남아있음 캐시
+                           거기서 refresh하면 똑같은 내용을 다시 write하는 작업을 함
+                           내부적으로 청소하고 정리해야하는 작업들을
+                           redirect로 해결
+
+
+write에서 summit후
+list의 소스보기를 하면 나오는 소스를 만드는 게 ejs가 하는 역할
+매 게시물이 작성될 때마다 코드를 수기로 작성할 수가 없으니 
+ejs가 루프로서 wirte화면에서 세이브한 내용이 서버로 갔다가
+서버의 데이터를 list의 클라이언트 화면에 남겨줌
+
+
+다음 주에 배울 react는 이 것도 뛰어 넘어서 AJAX를 활용함 
+html 내에 <% %>로 작성했던 부분들조차 그렇게 작성하지 않아도 되도록 해줌
+
