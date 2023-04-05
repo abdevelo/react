@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> <!--jquery CDN 붙이기-->
+  <title>Document</title>
+</head>
+<body>
+  <form action="">
+    x : <input type="text" name="x" id="x"> <br/>
+    y : <input type="text" name="y" id="y"> <br/>
+    
+    result : <input type="text" name="result" id="result"> <br/>
+
+    <button type="button" id="btnAdd"> 더하기 </button>
+    <button type="button" id="btnSub"> 빼기 </button>
+    <button type="button" id="btnMul"> 곱하기 </button>
+    <button type="button" id="btnDiv"> 나누기 </button>
+
+  </form>
+</body>
+</html>
+
+<script>
+  $(document).ready( ()=> {
+
+
+    $("button").click( () => {
+      let btnId = $(event.target).attr("id");
+      let url = "/ajax/" + btnId.substring(3);
+
+      $.ajax( {
+        url: url,
+        data : { "x": $("#x").val(), "y":$("#y").val()},
+        dataType: "json"
+      })
+      .done( (res,status,err) => {
+        console.log(res);
+        $("#result").val( res.result); // 위에서 JSON으로 보낸 데이터의 result트를 읽어서 다시 html의 result아이디가 있는 값에 넣기
+      })
+      .fail( (res, status, err)=> {
+        console.log(status);
+      })
+    })
+
+
+    // $("#btnAdd").click( ()=> {
+    //   // 비동기모드 : 반환값X 대신'.'다음문장이 수행
+    //   $.ajax( { 
+    //     url : "/ajax/add", 
+    //     data : { "x":$("#x").val(), "y":$("#y").val()}, 
+    //     dataType : "json"// 결과를 json형식으로 가져오겠다
+    //   })
+    //   .done( (res,status,err) => {
+    //     console.log(res);
+    //     $("#result").val( res.result );
+    //   })
+    //   .fail( (res, status, err) => {
+    //     console.log(stauts);
+    //   })
+    // })
+
+
+    // $("#btnSub").click( ()=> {
+    //   // 비동기모드 : 반환값X 대신'.'다음문장이 수행
+    //   $.ajax( { 
+    //     url : "/ajax/Sub", 
+    //     data : { "x":$("#x").val(), "y":$("#y").val()}, 
+    //     dataType : "json"// 결과를 json형식으로 가져오겠다
+    //   })
+    //   .done( (res,status,err) => {
+    //     console.log(res);
+    //     $("#result").val( res.result );
+    //   })
+    //   .fail( (res, status, err) => {
+    //     console.log(stauts);
+    //   })
+    // })
+
+    // $("#btnMul").click( ()=> {
+    //   // 비동기모드 : 반환값X 대신'.'다음문장이 수행
+    //   $.ajax( { 
+    //     url : "/ajax/Mul", 
+    //     data : { "x":$("#x").val(), "y":$("#y").val()}, 
+    //     dataType : "json"// 결과를 json형식으로 가져오겠다
+    //   })
+    //   .done( (res,status,err) => {
+    //     console.log(res);
+    //     $("#result").val( res.result );
+    //   })
+    //   .fail( (res, status, err) => {
+    //     console.log(stauts);
+    //   })
+    // })
+
+    // $("#btnDiv").click( ()=> {
+    //   // 비동기모드 : 반환값X 대신'.'다음문장이 수행
+    //   $.ajax( { 
+    //     url : "/ajax/Div", 
+    //     data : { "x":$("#x").val(), "y":$("#y").val()}, 
+    //     dataType : "json"// 결과를 json형식으로 가져오겠다
+    //   })
+    //   .done( (res,status,err) => {
+    //     console.log(res);
+    //     $("#result").val( res.result );
+    //   })
+    //   .fail( (res, status, err) => {
+    //     console.log(stauts);
+    //   })
+    // })
+
+  })
+
+
+
+
+</script>
