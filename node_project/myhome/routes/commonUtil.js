@@ -29,10 +29,11 @@ function getPaging(pg, totalCnt, pageGroupSize=10)
     pnTotal= Math.ceil( totalCnt/pageGroupSize );
     pgGroupStart = parseInt((pg-1)/pageGroupSize) * pageGroupSize + 1; //parseInt 는 소숫점 자르기 위해 사용= 나눈 값의 몫을 구하기 위해 사용
     pgGroupEnd = pgGroupStart + 10 -1 ; 
+
     if (pgGroupEnd>pnTotal)
       pgGroupEnd = pnTotal+1;
 
-    console.log( pg, pgGroupStart, pgGroupEnd);
+    console.log(pg, pgGroupStart, pgGroupEnd);
 
     //함수는 반환값이 하나여야 한다. JSON객체로 만들자 
     // 함수는 기본적으로 return값을 하나만 넘길 수 있기 때문에 

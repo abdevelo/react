@@ -1,9 +1,12 @@
  
           <ul class="pagination  justify-content-center">
-            <li class="page-item"><a class="page-link" href="javascript:goPage('1')">first</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:goPage('1')">first</a></li> <!--페이지를 처음으로 보낼 때-->
             
+            <!-- 아래에 언급될 paging은 board.js의 라우터 객체에서  비롯됨
+                  URL path : /view/:pg-->
+
             <%if( paging.pg==1) {%>
-            <li class="page-item disabled"><a class="page-link" href="#none">Previous</a></li>
+            <li class="page-item disabled"><a class="page-link" href="#none">Previous</a></li> 
             <%}else{%>
               <li class="page-item"><a class="page-link" 
                                       href="javascript:goPage(<%=paging.pg-1%>)">Previous</a></li>
@@ -17,8 +20,6 @@
                 <a class="page-link" href="javascript:goPage('<%=i%>')"><%=i%></a>
               </li>              
             <%}%>
-
-            <%%>
 
             <% if ( paging.pg==paging.pnTotal ) {%>
             <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>

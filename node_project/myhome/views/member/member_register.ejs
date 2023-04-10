@@ -89,7 +89,12 @@
 </html>
 
 <script>
-
+/**** AJAX ****
+ * 1. 버튼 클릭 시 
+ * 2. 화면의 유저 아이디 값을 받아와 ( post형식으로, json객체로 ,/member/idcheck라는 url경로로)
+ * 3.
+ * 
+ * **/
 $(document).ready( ()=> {
   $("#btnIdCheck").click( ()=>{
     
@@ -100,9 +105,14 @@ $(document).ready( ()=> {
       data:{crossid:userid},
       method:"post",
       dataType:"json"
-    }).then( (result)=> {
-
-      if ( result.result == "success")
+    }).then( (anything)=> {
+// ajax를 실행시
+// member.js의 스니펫 중 URL경로가 '/idcheck'인 스니펫으로 넘어감
+// 그 곳에서 결정 된 JSON객체가 anything안으로 들어옴
+// anything이 담고 있는 JSON객체의 키 값이 result인 value는 
+//"success"이거나 "fail"임
+// 그 값을 반환해서 하단에서 비교 
+      if ( anything.result == "success")
       {
         alert("사용가능한 아이디입니다.");
         $("#idcheckyn").val("Y"); //idcheck가 되었음을 저장
