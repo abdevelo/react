@@ -1,0 +1,62 @@
+우리가 이번 주 한 건 node.js 백엔드 
+node.js로 게시판 화면 만드는 프로젝트 메뉴얼 
+
+1.  cd 프로젝트_만들_폴더_경로
+프로젝트 만들 폴더로 먼저 이동 ex) hello, myhome
+  
+  <-- npm install -g express-generator 프로그램을 먼저 설치해야 express 프로그램 사용이 가능
+
+2. express project명 --view=ejs 
+
+  cd project명 -- package.json 파일이 있는 폴더로 이동해야 함
+  
+    npm install  -- package.json 파일을 읽어서 
+                    node_modules폴더를 만들고 
+                    이 폴더에 필요한 라이브러리를 설치
+  
+  시작 : npm start 또는 nodemon start ( nodemon 프로그램이 설치되어 있을 때 )
+
+3. 게시판 만들기 
+  - 게시판 만들려면 원칙적으로 필요한 화면이 3개
+  - 단, 관리자 화면 및 회원 가입 화면은 또 따로...
+
+  board_list.html, 
+  board_write.html,
+  board_view.html
+
+  확장자를 html->ejs 로 바꿔서 views 폴더 하위에 놓는다.
+
+  4. 라우터 만들기 
+  - 업무별로 필요한 라우터를 분할해서 만든다 ex) board.js , member.js
+      
+      app.js 파일에서 라우터 및 해당 라우터 아래에서 작업할 경우 자동입력되는 base url을 사용
+
+
+  5. app.js에서 라우터 import, require url과 등록
+
+로그온이나 장바구니 등의 
+쿠키와 세션 둘다 정보를 저장하기 위한 객체
+
+  쿠키 : 내 컴퓨터에 저장
+  세션 : 서버에 저장.
+         로그온이나 장바구니 등의 정보를 저장하기 위해서 사용하는 객체
+         ex) 다음 사이트를 크롬에서 접근하고 exe에서 접근하면, 각각 세션이 따로 생성
+
+  node.js에서의 세션을 1.파일, 2.디비 
+  2번 mysql 디비에 세션정보를 저장하려고 한다
+
+  npm install express-session 
+  npm install express-mysql-session 
+
+  app.js 파일 열어서
+  require 많이 써있는 곳에 추가 
+
+
+  const session = require("express-session");
+  const MYSQLSTORE = require("express-mysql-session")(session)
+  const DBInfo = require("./route/commonDB") // 디비 정보를 줘야 함
+
+  이 sesion 테이블은 우리가 조작하지 않고 서버가 알아서 기록
+  세션값이 해킹되는 것을 방지
+
+  
