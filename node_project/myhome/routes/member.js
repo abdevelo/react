@@ -62,6 +62,7 @@ router.post('/login', async function(req,res,next){
   let userid = req.body.userid;
   let password = req.body.password; 
   let sql = `select * from tb_member where userid='${userid}' `;
+  // ${userid} 밖에 '' 따옴표 붙여주지 않으면 null object임 **** 주의 *****
    //userid 칼럼의 값이 ${userid} 인 모든 칼럼을 선택해서 그 결과는 하나 또는 그 이상의 row
    //ex) `select * from tb_member where age=20` ; 이면 나이가 20인 모든 사람을 선택한 rows
 
@@ -124,4 +125,21 @@ router.get('/put', async function(req,res, next) {
   console.log(req.session["userid"]);
   //res.redirect("/");
 });
+
+
+router.get('/logout', async function(req,res, next) {
+// 첫번째, session자체를 날려버리는 방법
+  req.session["userid"]="";   
+  req.session["username"]="";
+  req.session["email"]="";
+
+  // or 두번째, 파괴 방법
+
+  // req.session.destroy();
+
+  res.redirect("/"); // 로그아웃하고나면 index로 이동하기 
+});
+
+
+
 module.exports = router;

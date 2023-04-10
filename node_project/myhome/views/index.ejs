@@ -5,7 +5,26 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <!-- <p><%=session["username"]%></p>  -->
+    <!--session 정보를 넘겨주려면 index.js에서 
+          res.render('index', { title: 'Express', session:req.session });
+          를 추가해주어야 함-->
+
+    <%if(session["userid"]==undefined || session["userid"]==""){%>
+      <p>
+        <a href="/member/register">회원가입</a>
+        <a href="/member/login">로그온</a>
+      </p>
+    <%}else{%>
+      <p>
+        <%=session["username"]%>
+        <a href="/member/logout">로그아웃</a>
+      </p>
+    <%}%>
+
   </body>
 </html>
