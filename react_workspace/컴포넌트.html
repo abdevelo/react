@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script> <!--react CDN 버전 18-->
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    //ReactDom 이라는 클래스가 있음. DOM이 대문자인 것에 주의
+    ReactDOM.render(
+      <div>
+        <h1>Hello React</h1>
+        <App/>
+        <App/>
+        <App/>
+      </div>,
+      document.getElementById("root") //전체구조의 뿌리가 되는 태그 
+     );
+     //컴포넌트 작성하기
+     //1.class 기반 컴포넌트 : class 초창기
+     //2.함수기반 컴포넌트   : 재작년부터 부흥
+
+     //함수기반 컴포넌트 
+     //html 에서 사용하기 위해서 <app/>을 붙여!  
+     function App(){
+
+     const onClick = () => {
+        alert("눌림");
+     }
+      return(
+        <div>
+          <h1>함수컴포넌트</h1>
+          <button type="button" onClick={onClick}>클릭</button>
+        </div>
+      )
+     }
+
+           // return구문 뒤에 html (템플릿)을 반환
+      // 반드시 root 태그가 존재
+      // html 태그를 트리구조로 만들어야 함
+      /* return(
+            <div>
+                <h1>함수컴포넌트</h1>
+            </div>
+            <div></div>
+      )
+       * 이렇게 div태그를 두 개 병렬 구조로 해선 안 되고, 트리구조로 만들어야 한다..?
+      */
+  </script>
+</body>
+</html>

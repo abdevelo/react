@@ -1,0 +1,42 @@
+
+@mysql연동1.js
+
+를 보면 비동기의 단점을 알 수 있다. 
+
+pool.getConnection( (err,connection)=>{}) 함수 안의 
+콜백 함수 중에 
+
+  sql =  ` 
+      insert into tb_board(title, writer, contents, wdate)
+      values( ?, ?, ?,now())
+  `; 
+  let params =['제목3','장길산','내용3'];
+
+  connection.query( sql, params, (err, rows) => {
+    if ( err )
+      console.log("err");
+    else 
+      console.log("insert 성공");
+  });
+
+  sql = "select * from tb_board";
+  connection.query( sql, (err, rows) => {
+    if ( err )
+      console.log("err");
+    else 
+      console.log(rows);
+  });
+
+  중 sql에 insert하는 함수가 먼저 실행 될 지
+  select를 하는 함수가 먼저 실행될지 알 수없다. 
+  --> 비동기식 언어의 단점
+
+  따라서, 우리는 비동기를 동기식으로 바꾸는 법을 알아야 한다. 
+  101p로 가보자 
+
+
+  ------------------------------------------------
+
+  프라미스 ( 비동기 처리 )
+
+  

@@ -1,0 +1,8 @@
+
+세 개의 디자인 : ejs
+                 list.ejs   - 데이터 목록             /score/list/:pg
+                 view.ejs   - 데이터 하나만 상세화면  /score/view/:선택항목id ..... 선택항목id는 DB에서 pk개념, 게시물 식별값
+                 write.ejs  -                         /score/write - write페이지로 이동
+                                                      /score/save  - 실제 저장 후 list로 복귀
+
+
