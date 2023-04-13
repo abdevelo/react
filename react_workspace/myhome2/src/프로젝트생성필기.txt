@@ -1,0 +1,66 @@
+1. cd 경로 설정
+  cd c:/react/react_workspace 
+2. 프로젝트 생성
+  create-react-app myhome_router
+  myhome_router는 프로젝트 명으로 원하는 것으로 대체 가능
+3. cd 경로 프로젝트로 재설정
+  cd myhome_router
+4. 해당 경로에서 라이브러리 다운로드
+  npm install react-router-dom
+  npm install bootstrap
+  npm install axios
+
+    **설치완료확인방법**
+    package.json 내에 react.dom, bootstrap, axios 확인 
+
+5. index.js 에서 수정
+  import 추가
+  render내에 라우터 수정
+
+  import {BrowserRouter} from 'react-router-dom';
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+ 
+  root.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+
+
+6. App.js  라우터 놓기 
+
+
+
+7. App.js 내에 헤드부분 빼고 routes 태그 들 넣기 
+
+function App() {
+  return (
+    <div className="App">
+      <h1>라우터 연습</h1>
+      {
+        // path = 가상url
+        // element = 컴포넌트
+      }
+      <Routes>
+        <Route path = "/" element = {<Layout/>}>
+          {/* 전체적인 라우터 골격은 Layout 컴포넌트에 넣는다. */}
+          <Route index element = {<Home/>}/>
+          <Route path="about" element = {<About/>}/>
+          <Route path="for1" element = {<Fortest1/>}/>
+          <Route path="for2" element = {<Fortest2/>}/>
+          <Route path="gugu" element = {<Gugudan/>}/>
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+
+ 
+
+
+
+-----------------------------------------------
+파이널. 코드 작성 후 yarn스타트
+  작성된 코드를 실행하길 윈하면 
+  yarn start
+-----------------------------------------------

@@ -1,0 +1,70 @@
+
+
+frontend 
+  화면 UI, 디자인
+  Input 사용자가 입력한 데이터를 받아서 
+    ---> Axios 는 Ajax의 라이브러리 비동기로 서버와 정보를 주고받는 담당
+
+backend
+  node.js 기반의 express
+  디비 서버에 붙어서 데이터 읽고 쓰기 
+
+
+frontend가 heroList를 요구하면 
+-> Axios를 통해서 
+-> backend로부터 디비의 데이터를 읽어서
+-> Json으로 frontend에 다시 보내줌
+
+
+
+----------------------------------
+AJAX ( Asynchronous JavaScript and XML) 
+비동기 자바스크립트와 XML
+
+    - 서버로부터 데이터를 읽어와
+    - 페이지를 다시 로딩할 필요 없이 동적으로 데이터를 업데이트 한다.
+
+    - AJAX를 사용하기 위해서는 
+        - fetch() (자바스크립트 내장함수) 또는 Axios나 Jqeury같은 라이브러리로 데이터를 읽음
+        - setState() 메소드를 통해서 리랜더하고 업데이트
+
+
+ex)
+
+import React, { Component } from 'react';
+import axios from 'axios';
+
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+    };
+  }
+
+  componentDidMount() {
+    axios.get('/api/data')
+      .then((response) => {
+        this.setState({ data: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  render() {
+    const { data } = this.state;
+    return (
+      <div>
+        {data.map((item) => (
+          <div key={item.id}>
+            <h2>{item.title}</h2>
+            <p>{item.description}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+}
+
+export default MyComponent;
