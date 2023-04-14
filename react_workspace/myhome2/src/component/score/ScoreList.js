@@ -18,10 +18,7 @@ function ScoreList(props) {
         await axios.get(url)
 
         .then((res)=>{
-          setScoreList(res.data);
           setLoading(true);
-          console.log(res.data);
-
         }).catch( (error)=>{
           console.log(error);
         })

@@ -7,10 +7,12 @@ import {BrowserRouter} from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter>  
+  {/* 라우터를 사용하고자 할 경우 App컴포넌트를 감싸야하는 컴포넌트  */}
     <App />
   </BrowserRouter>
 );
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

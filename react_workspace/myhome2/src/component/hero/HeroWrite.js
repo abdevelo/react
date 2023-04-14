@@ -11,47 +11,47 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 // <col> <input> -> <col/> <input/> 태그 닫기
 // <a> -> <Link> 앵커태그 링크 태그로 바꾸고, href없애고, Link import하기
 /******************************************************************************/
-function BoardWrite (props){
+function HeroWrite (props){
 
-  // let {id} = useParams(); // ID값 받아와서 ---> useEffect ?
+  let {id} = useParams(); // ID값 받아와서 ---> useEffect ?
   let history = useNavigate(); // refresh, redirect처럼 화면의 이동을 보여줌
-  
-  const[title,setTitle]=useState(""); 
-  const[writer,setWriter] = useState(""); 
-  const[contents,setContents] = useState("");
-  
+
+  const[heroName,setHeroName] = useState("");
+  const[heroDesc,setHeroDesc] = useState("");
 
   useEffect( () => {
-    /*async function loadData(){
-      let results = await axios.get(SERVERIP+"/rest_board/view/"+);
+    console.log("id",id);
+    async function loadData(){
+      let results = await axios.get(SERVERIP+"/hero/view/"+id);
 
-      setTitle(results.data.rest_board.title);
-      setWriter(results.data.rest_board.writer);
-      setContents(results.data.rest_board.contents);
+
+      setHeroName(results.data.hero.hero_name);
+      setHeroDesc(results.data.hero.hero_desc);
+
+      console.log(results.data.hero.hero_name);
+      console.log(results.data.hero.hero_desc);
     }
-    if (writer !==undefined) loadData(); //write가 아니고 view로 호출할 때 
+    if (id !==undefined) loadData(); //write가 아니고 view로 호출할 때 
     // window.load역할
     //BoardWrite 컴포넌트가 /board/write일 때는 undefined가 오고
     // /board/view/1일 때는 id에는 파라미터값이 저장
-  */    },[]);
+  },[]);
 
-  const titleChange=(e)=>{
-    setTitle(e.target.value);
+  const nameChange=(e)=>{
+    setHeroName(e.target.value);
   }
-  const writerChange=(e)=>{
-    setWriter(e.target.value);
-  }
-  const contentsChange=(e)=>{
-    setContents(e.target.value);
+  const descChange=(e)=>{
+    setHeroDesc(e.target.value);
   }
   // 서버로 입력받은 데이터를 전송하기
-  const postData= async ()=>{
+  const postData=()=>{
     //데이터를 JSON객체로 묶어 보내야 함
-    let data = {title:title, writer:writer,contens:contents};
-    await axios.post(SERVERIP+"/rest_board/write", data)
+    let data = {"hero_name":heroName, "hero_desc":heroDesc};
+
+    axios.post(SERVERIP+"/hero/write", data)
     .then( (res)=>{
       console.log(res.data); //res 가 response가 아닌result다 
-      history("/board/list"); // redirect에 대응
+      history("/hero/list"); // redirect에 대응
     }).catch( (error)=>{
       console.log(error);
     });
@@ -71,29 +71,20 @@ function BoardWrite (props){
             </colgroup>
             <tbody>
               <tr>
-                <td>제목</td>
+                <td>이름</td>
                 <td>
                     <div className="mb-3" style={{marginTop:"13px"}}>
-                        <input type="text" className="form-control" id="title" name="title"
-                        placeholder="제목을 입력하세요" onChange={titleChange}/>
+                        <input type="text" className="form-control" id="title" name="title" value={heroName}
+                        placeholder="이름을 입력하세요" onChange={nameChange}/>
                     </div>
                 </td>
-              </tr>   
+              </tr>       
               <tr>
-                <td>작성자</td>
+                <td>업적</td>
                 <td>
                     <div className="mb-3" style={{marginTop:"13px"}}>
-                        <input type="text" className="form-control" id="title" name="title"
-                        placeholder="작성자를 입력하세요" onChange={writerChange}/>
-                    </div>
-                </td>
-              </tr>    
-              <tr>
-                <td>내용</td>
-                <td>
-                    <div className="mb-3" style={{marginTop:"13px"}}>
-                        <input type="text" className="form-control" id="writer" name="writer"
-                        placeholder="내용을 입력하세요" onChange={contentsChange} />
+                        <input type="text" className="form-control" id="writer" name="writer" value={heroDesc}
+                        placeholder="업적을 입력하세요" onChange={descChange} />
                     </div>
                 </td>
               </tr>               
@@ -109,4 +100,4 @@ function BoardWrite (props){
   )
 }
 
-export default BoardWrite;
+export default HeroWrite;

@@ -4,50 +4,31 @@ import axios from 'axios';
 /******************************************************************************/
 import { SERVERIP } from '../../CommonUtil';
 import { Link } from 'react-router-dom';
-import Pagination from 'react-js-pagination';
 /******************************************************************************/
 // 위의 3개는 필수 
 
-function BoardList(props) {
+function HeroList(props) {
 
     const [boardList, setBoardList ] = useState([]);
-    const [totalCnt, setTotalCnt ] = useState(0); //2023/04/14 pagination 위해 추가
-    //정수라는 것을 티내기 위해서 useState(0);
-    const [pg, setPg] = useState(0); //2023/04/14 pagination 위해 추가
     const [loading, setLoading] = useState(false);
-    
-    // loadData함수를 메 페이지 열 때마다 쓰기 위해서 
-    // 상수로 선언
-    const loadData = async (pg)=>{
-        const url = SERVERIP+"/rest_board/list/"+pg ;
-        console.log(url);
+
+    useEffect( ()=> {
+      async function loadData() {
+        const url = SERVERIP+"/hero/list/";
         await axios.get(url)
+
         .then((res)=>{
-          let totalCnt = res.data.totalCnt;
-          let pg = res.data.pg;
-          let boardList = res.data.boardList;
-          console.log("데이터전체개수 : ", totalCnt);
-          console.log("현재페이지 : ", pg);
-          console.log("데이터 : ", boardList);
-
-          setTotalCnt(totalCnt);
-          setPg(pg);
-          setBoardList(boardList);
-
+          setBoardList(res.data);
           setLoading(true);
           console.log(res.data);
+
         }).catch( (error)=>{
           console.log(error);
         })
       }
-    
-    const goPage = (pg)=>{
-      setPg(pg);
-      loadData(pg);
-    }
 
-    useEffect( ()=> {
-      loadData(2); //여기에 2를 넣으면 두번째 페이지부터 자동로드 
+      loadData();
+
     },[])
 
     /**여기서 ()=>{ async function 함수명(){ } 
@@ -85,9 +66,8 @@ function BoardList(props) {
                     return(
                       <tr key={index}>
                         <td>{item.id}</td>
-                        <td><Link to={"/board/view/"+item.id}>{item.title}</Link></td>
-                        <td>{item.username}</td>
-                        <td>{item.wdate}</td>
+                        <td><Link to={"/hero/view/"+item.id}>{item.hero_name}</Link></td>
+                        <td>{item.hero_desc}</td>
                       </tr>
                     )
                   })
@@ -95,24 +75,15 @@ function BoardList(props) {
                 }
             </tbody>
           </table>
-      
-      <Pagination
-        activePage={pg} 
-        // 현재실행중인 페이지
-        itemsCountPerPage={10}
-        // 한 페이지에 보여줄 라인 수
-        totalItemsCount={totalCnt}
-        pageRangeDisplayed={5}
-        prevPageText={"<"}
-        nextPageText={">"}
-        onChange={goPage}
-      />
-      
+          
       <div>
-      <Link className="btn btn-danger" to="/board/write">글쓰기</Link>
+      <Link className="btn btn-danger" to="/hero/write">글쓰기</Link>
       </div>
+
     </div>  
+
+
     );
 }
 
-export default BoardList;
+export default HeroList;

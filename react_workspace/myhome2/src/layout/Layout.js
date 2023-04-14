@@ -20,13 +20,13 @@ function Layout() {
         <div className="container-fluid">
           <ul className="navbar-nav">
             <li className="nav-item">
-            <NavLink className="nav-link" to="/Home">Home</NavLink>
+            <NavLink className="nav-link" to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/board/list">Board</NavLink>
+              <NavLink className="nav-link" to="/board/list">게시판</NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Link</a>
+              <NavLink className="nav-link" to="/hero/list">영웅</NavLink>
             </li>
             <li className="nav-item">
               <a className="nav-link disabled" href="#">Disabled</a>
