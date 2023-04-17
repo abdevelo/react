@@ -77,7 +77,7 @@ function HeroList(props) {
           </table>
           
       <div>
-      <Link className="btn btn-danger" to="/hero/write">글쓰기</Link>
+      <Link className="btn btn-danger" to="/h9ero/write">글쓰기</Link>
       </div>
 
     </div>  

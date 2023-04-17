@@ -47,7 +47,7 @@ function BoardList(props) {
     }
 
     useEffect( ()=> {
-      loadData(2); //여기에 2를 넣으면 두번째 페이지부터 자동로드 
+      loadData(1); //여기에 2를 넣으면 두번째 페이지부터 자동로드 
     },[])
 
     /**여기서 ()=>{ async function 함수명(){ } 
@@ -73,12 +73,15 @@ function BoardList(props) {
         <table className="table table-hover ">
             <thead className="table-secondary">
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>날짜</th>
+                <th>첨부파일</th>
               </tr>
             </thead>
             <tbody>
+
                 {
                   loading===true?
                   boardList.map( (item, index)=>{
@@ -88,6 +91,17 @@ function BoardList(props) {
                         <td><Link to={"/board/view/"+item.id}>{item.title}</Link></td>
                         <td>{item.username}</td>
                         <td>{item.wdate}</td>
+                        <td> 
+                          {
+                            item.filelink !=null?
+                            <img src={`http://127.0.0.1:9090/${item.filelink}`} 
+                                 height="200px" 
+                                 width=""
+                                 crossOrigin="annonymous"></img>
+                            :""
+                          } 
+                          {/* 파일링크가 없는 경우 빈 공간이 나오도록 null을 추가  */}
+                        </td>
                       </tr>
                     )
                   })
@@ -113,6 +127,8 @@ function BoardList(props) {
       </div>
     </div>  
     );
+
+    
 }
 
 export default BoardList;
